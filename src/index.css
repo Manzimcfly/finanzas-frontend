@@ -1,0 +1,453 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Dark mode: preserve gradient backgrounds on cards */
+html.dark .bg-gradient-to-br.from-violet-500,
+html.dark .bg-gradient-to-br.to-purple-600 {
+  background: linear-gradient(to bottom right, #7c3aed, #a855f7) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-cyan-500,
+html.dark .bg-gradient-to-br.to-teal-600 {
+  background: linear-gradient(to bottom right, #06b6d4, #14b8a6) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-teal-500,
+html.dark .bg-gradient-to-br.to-emerald-600 {
+  background: linear-gradient(to bottom right, #14b8a6, #059669) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-amber-500,
+html.dark .bg-gradient-to-br.to-yellow-600 {
+  background: linear-gradient(to bottom right, #f59e0b, #d97706) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-teal-400,
+html.dark .bg-gradient-to-br.to-cyan-500 {
+  background: linear-gradient(to bottom right, #2dd4bf, #06b6d4) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-amber-400,
+html.dark .bg-gradient-to-br.to-orange-500 {
+  background: linear-gradient(to bottom right, #fbbf24, #f97316) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-cyan-400,
+html.dark .bg-gradient-to-br.to-blue-500 {
+  background: linear-gradient(to bottom right, #22d3ee, #3b82f6) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-red-400,
+html.dark .bg-gradient-to-br.to-rose-500 {
+  background: linear-gradient(to bottom right, #f87171, #f43f5e) !important;
+  filter: none;
+}
+
+html.dark .bg-gradient-to-br.from-blue-400,
+html.dark .bg-gradient-to-br.to-indigo-500 {
+  background: linear-gradient(to bottom right, #60a5fa, #6366f1) !important;
+  filter: none;
+}
+
+/* Dark mode global backgrounds */
+html.dark,
+html.dark body {
+  background-color: #0f172a !important;
+}
+
+html.dark main {
+  background-color: #0f172a !important;
+}
+
+html.dark .min-h-screen {
+  background-color: #0f172a !important;
+}
+
+/* Override gradient page backgrounds only (not cards with gradients) */
+html.dark [class*="from-slate-50 to-"].min-h-screen,
+html.dark [class*="from-teal-50 to-"].min-h-screen,
+html.dark [class*="bg-gradient-to-br"][class*="min-h-screen"] {
+  background: #0f172a !important;
+}
+
+/* Cards and containers - but preserve gradient cards */
+html.dark .bg-white,
+html.dark .bg-white\/80,
+html.dark .bg-white\/90,
+html.dark .bg-white\/50 {
+  background-color: #1e293b !important;
+}
+
+html.dark .bg-gray-50,
+html.dark .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+
+html.dark .bg-teal-50,
+html.dark .bg-teal-100 {
+  background-color: #134e4a !important;
+}
+
+html.dark .bg-amber-50,
+html.dark .bg-amber-100 {
+  background-color: #451a03 !important;
+}
+
+html.dark .bg-cyan-50,
+html.dark .bg-cyan-100 {
+  background-color: #082f49 !important;
+}
+
+html.dark .bg-violet-50,
+html.dark .bg-violet-100 {
+  background-color: #2e1065 !important;
+}
+
+html.dark .bg-red-50 {
+  background-color: #450a0a !important;
+}
+
+html.dark .bg-blue-50 {
+  background-color: #172554 !important;
+}
+
+html.dark .bg-green-50 {
+  background-color: #052e16 !important;
+}
+
+/* Borders */
+html.dark .border-teal-100,
+html.dark .border-teal-200 {
+  border-color: #334155 !important;
+}
+
+html.dark .border-gray-200,
+html.dark .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+/* Text colors */
+html.dark .text-teal-700,
+html.dark .text-teal-800,
+html.dark .text-teal-600,
+html.dark .text-teal-500 {
+  color: #5eead4 !important;
+}
+
+html.dark .text-amber-700,
+html.dark .text-amber-600 {
+  color: #fcd34d !important;
+}
+
+html.dark .text-cyan-700,
+html.dark .text-cyan-600 {
+  color: #22d3ee !important;
+}
+
+html.dark .text-violet-700,
+html.dark .text-violet-600 {
+  color: #c4b5fd !important;
+}
+
+html.dark .text-gray-600,
+html.dark .text-gray-700,
+html.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-red-600,
+html.dark .text-red-700 {
+  color: #f87171 !important;
+}
+
+html.dark .text-green-600,
+html.dark .text-green-700 {
+  color: #4ade80 !important;
+}
+
+html.dark .text-blue-600,
+html.dark .text-blue-700 {
+  color: #60a5fa !important;
+}
+
+/* Input backgrounds */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+html.dark input::placeholder {
+  color: #64748b !important;
+}
+
+/* Shadows */
+html.dark .shadow-lg,
+html.dark .shadow-xl,
+html.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Scrollbar */
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Dark mode global styles */
+.dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.dark main {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Dark mode backgrounds - applied globally */
+.dark,
+.dark body,
+.dark main,
+.dark > div {
+  background-color: #0f172a !important;
+}
+
+/* Also target the root div */
+html.dark body,
+html.dark body > div {
+  background-color: #0f172a !important;
+}
+
+/* Ensure no white gaps */
+.dark .min-h-screen {
+  background-color: #0f172a !important;
+}
+
+/* Gradient backgrounds - override them in dark mode */
+.dark [class*="from-slate-50"],
+.dark [class*="from-teal-50"],
+.dark [class*="from-cyan-50"],
+.dark [class*="from-violet-"],
+.dark [class*="via-"] {
+  background-image: none !important;
+  background-color: #0f172a !important;
+}
+
+/* Cards and containers */
+.dark .bg-white,
+.dark .bg-white\/80,
+.dark .bg-white\/90,
+.dark .bg-white\/50 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-teal-50,
+.dark .bg-teal-100 {
+  background-color: #134e4a !important;
+}
+
+.dark .bg-amber-50,
+.dark .bg-amber-100 {
+  background-color: #451a03 !important;
+}
+
+.dark .bg-cyan-50,
+.dark .bg-cyan-100 {
+  background-color: #082f49 !important;
+}
+
+.dark .bg-violet-50,
+.dark .bg-violet-100 {
+  background-color: #2e1065 !important;
+}
+
+.dark .bg-red-50 {
+  background-color: #450a0a !important;
+}
+
+.dark .bg-blue-50 {
+  background-color: #172554 !important;
+}
+
+.dark .bg-green-50 {
+  background-color: #052e16 !important;
+}
+
+/* Dark mode borders */
+.dark .border-teal-100,
+.dark .border-teal-200 {
+  border-color: #334155 !important;
+}
+
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+/* Dark mode text colors */
+.dark .text-teal-700,
+.dark .text-teal-800,
+.dark .text-teal-600,
+.dark .text-teal-500 {
+  color: #5eead4 !important;
+}
+
+.dark .text-amber-700,
+.dark .text-amber-600 {
+  color: #fcd34d !important;
+}
+
+.dark .text-cyan-700,
+.dark .text-cyan-600 {
+  color: #22d3ee !important;
+}
+
+.dark .text-violet-700,
+.dark .text-violet-600 {
+  color: #c4b5fd !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-red-600,
+.dark .text-red-700 {
+  color: #f87171 !important;
+}
+
+.dark .text-green-600,
+.dark .text-green-700 {
+  color: #4ade80 !important;
+}
+
+.dark .text-blue-600,
+.dark .text-blue-700 {
+  color: #60a5fa !important;
+}
+
+/* Dark mode input backgrounds */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+.dark input::placeholder {
+  color: #64748b !important;
+}
+
+/* Dark mode shadows */
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
